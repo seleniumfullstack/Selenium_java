@@ -1,0 +1,56 @@
+package com.test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.interactions.*;
+
+public class Testwebelem {
+	
+	public WebDriver driver;
+	
+	
+	@BeforeTest
+	public void setup()
+	{
+		System.setProperty("webdriver.chrome.driver", "D:/projects/chromedriver.exe");
+        driver = new ChromeDriver();
+       driver.get("http://demo.automationtesting.in/Register.html");
+       driver.manage().window().maximize();
+	}
+	//automating the registration form
+	@Test(priority=1)
+	public void Fillregistration_form() throws InterruptedException
+	{
+		
+       driver.findElement(By.xpath("//input[@placeholder='First Name']")).sendKeys("Nirmal");
+       driver.findElement(By.xpath("//input[@placeholder='Last Name']")).sendKeys("chakraborty");
+       driver.findElement(By.xpath("//textarea[@ng-model='Adress']")).sendKeys("#65,1st cross");
+       driver.findElement(By.xpath("//input[@type='email']")).sendKeys("nirmal@gmail.com");
+       driver.findElement(By.xpath("//input[@type='tel']")).sendKeys("9916095784");
+       driver.findElement(By.xpath("//input[@value='Male']")).click();
+       driver.findElement(By.id("checkbox1")).click();
+         
+       Select select=new Select(driver.findElement(By.id("Skills")));
+      
+       select.selectByValue("Adobe InDesign");
+       
+       Thread.sleep(2000);
+       
+       
+       
+       
+	}
+	
+
+	@AfterTest
+	public void cleanup()
+	{
+		 driver.quit();
+	}
+
+}

@@ -1,0 +1,39 @@
+package com.test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+public class Testwebelem {
+	
+	public WebDriver driver;
+	
+	@BeforeTest
+	public void setup()
+	{
+		System.setProperty("webdriver.chrome.driver", "D:/projects/chromedriver.exe");
+        driver = new ChromeDriver();
+       driver.get("http://demo.automationtesting.in/Register.html");
+       driver.manage().window().maximize();
+	}
+	@Test(priority=1)
+	public void Fillregistration_form()
+	{
+		
+       driver.findElement(By.xpath("//input[@placeholder='First Name']")).sendKeys("Nirmal");
+       
+	}
+	//@Test(priority=2)
+	//public void testshopping()
+	//{
+		//driver.findElement(By.xpath("//*[@id=\"nav-menu-item-cart\"]/a/span/span[2]/span")).click();
+	//}
+
+	@AfterTest
+	public void cleanup()
+	{
+		 driver.quit();
+	}
+
+}

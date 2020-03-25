@@ -1,0 +1,19 @@
+package com.test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class Testm {
+	
+	public WebDriver driver;
+	@Test
+	public void test()
+	{
+		System.setProperty("webdriver.chrome.driver", "D:/projects/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.softwaretestingmaterial.com/software-testing-interview-questions-free-ebook/");
+        System.out.println("Selenium Webdriver Script in Chrome browser | Software Testing Material");
+        driver.close();
+	}
+
+}
